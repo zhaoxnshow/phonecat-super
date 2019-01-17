@@ -10,7 +10,7 @@ import { AppComponent }  from './app.component';
     UpgradeModule,
   ],
   declarations: [ AppComponent ],
-  bootstrap:    [ AppComponent ]
+  // bootstrap:    [ AppComponent ]
 })
 export class AppModule {
   constructor(private upgrade: UpgradeModule) { }
