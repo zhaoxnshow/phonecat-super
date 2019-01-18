@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Phone, PhoneData } from '../core/phone/phone.service';
+import { PhoneUtil } from '../core/phone/phone.util';
+
 // import { RouteParams } from '../ajs-upgraded-providers';
 
 @Component({
@@ -27,10 +29,10 @@ export class PhoneDetailComponent {
   //     this.setImage(this.phone.images[0]);
   //   });
   // }
-  constructor(activatedRoute: ActivatedRoute, phone: Phone) {
+  constructor(activatedRoute: ActivatedRoute, phone: Phone, phoneUtil: PhoneUtil) {
     phone.get(activatedRoute.snapshot.paramMap.get('phoneId'))
       .subscribe((p: PhoneData) => {
-        this.phone = this.convertImgUrl(p);
+        this.phone = phoneUtil.cvtDetailImgUrl(p);
         this.setImage(this.phone.images[0]);
       });
   }
@@ -39,12 +41,12 @@ export class PhoneDetailComponent {
     this.mainImageUrl = imageUrl;
   }
 
-  convertImgUrl(data: PhoneData) {
-    for(let i = 0; i < data.images.length; i++){
-      data.images[i] = 'app/'.concat(data.images[i]);
-    }
-    return data;
-  }
+  // convertImgUrl(data: PhoneData) {
+  //   for(let i = 0; i < data.images.length; i++){
+  //     data.images[i] = 'app/'.concat(data.images[i]);
+  //   }
+  //   return data;
+  // }
 }
 
 // angular.

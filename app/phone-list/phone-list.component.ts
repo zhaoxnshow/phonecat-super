@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 // import { downgradeComponent } from '@angular/upgrade/static';
 
 import { Phone, PhoneData } from '../core/phone/phone.service';
+import { PhoneUtil } from '../core/phone/phone.util';
 
 @Component({
   selector: 'phone-list',
@@ -14,9 +15,9 @@ export class PhoneListComponent {
   query: string;
   orderProp: string;
  
-  constructor(phone: Phone) {
+  constructor(phone: Phone, phoneUtil: PhoneUtil) {
     phone.query().subscribe(phones => {
-      this.phones = phones;
+      this.phones = phoneUtil.cvtListImgUrl(phones);
     });
     this.orderProp = 'age';
   }

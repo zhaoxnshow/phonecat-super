@@ -13,6 +13,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var phone_service_1 = require("../core/phone/phone.service");
+var phone_util_1 = require("../core/phone/phone.util");
 // import { RouteParams } from '../ajs-upgraded-providers';
 var PhoneDetailComponent = (function () {
     // // static $inject = ['$routeParams', 'phone'];
@@ -27,22 +28,16 @@ var PhoneDetailComponent = (function () {
     //     this.setImage(this.phone.images[0]);
     //   });
     // }
-    function PhoneDetailComponent(activatedRoute, phone) {
+    function PhoneDetailComponent(activatedRoute, phone, phoneUtil) {
         var _this = this;
         phone.get(activatedRoute.snapshot.paramMap.get('phoneId'))
             .subscribe(function (p) {
-            _this.phone = _this.convertImgUrl(p);
+            _this.phone = phoneUtil.cvtDetailImgUrl(p);
             _this.setImage(_this.phone.images[0]);
         });
     }
     PhoneDetailComponent.prototype.setImage = function (imageUrl) {
         this.mainImageUrl = imageUrl;
-    };
-    PhoneDetailComponent.prototype.convertImgUrl = function (data) {
-        for (var i = 0; i < data.images.length; i++) {
-            data.images[i] = 'app/'.concat(data.images[i]);
-        }
-        return data;
     };
     return PhoneDetailComponent;
 }());
@@ -51,7 +46,7 @@ PhoneDetailComponent = __decorate([
         selector: 'phone-detail',
         templateUrl: './phone-detail.template.html',
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute, phone_service_1.Phone])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, phone_service_1.Phone, phone_util_1.PhoneUtil])
 ], PhoneDetailComponent);
 exports.PhoneDetailComponent = PhoneDetailComponent;
 // angular.

@@ -10,6 +10,7 @@ import { PhoneDetailComponent } from './phone-detail/phone-detail.component';
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Phone } from './core/phone/phone.service';
+import { PhoneUtil } from './core/phone/phone.util';
 // import { routeParamsProvider } from './ajs-upgraded-providers';
 import { CheckmarkPipe } from './core/checkmark/checkmark.pipe';
 
@@ -23,6 +24,7 @@ import { CheckmarkPipe } from './core/checkmark/checkmark.pipe';
   ],
   providers: [
     Phone,
+    PhoneUtil,
     // routeParamsProvider,
   ],
   declarations: [ 

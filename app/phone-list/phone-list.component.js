@@ -12,11 +12,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 // import { downgradeComponent } from '@angular/upgrade/static';
 var phone_service_1 = require("../core/phone/phone.service");
+var phone_util_1 = require("../core/phone/phone.util");
 var PhoneListComponent = (function () {
-    function PhoneListComponent(phone) {
+    function PhoneListComponent(phone, phoneUtil) {
         var _this = this;
         phone.query().subscribe(function (phones) {
-            _this.phones = phones;
+            _this.phones = phoneUtil.cvtListImgUrl(phones);
         });
         this.orderProp = 'age';
     }
@@ -60,7 +61,7 @@ PhoneListComponent = __decorate([
         selector: 'phone-list',
         templateUrl: './phone-list.template.html'
     }),
-    __metadata("design:paramtypes", [phone_service_1.Phone])
+    __metadata("design:paramtypes", [phone_service_1.Phone, phone_util_1.PhoneUtil])
 ], PhoneListComponent);
 exports.PhoneListComponent = PhoneListComponent;
 // angular.module('phoneList')

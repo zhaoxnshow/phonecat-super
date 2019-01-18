@@ -15,6 +15,7 @@ var phone_detail_component_1 = require("./phone-detail/phone-detail.component");
 var app_component_1 = require("./app.component");
 var app_routing_module_1 = require("./app-routing.module");
 var phone_service_1 = require("./core/phone/phone.service");
+var phone_util_1 = require("./core/phone/phone.util");
 // import { routeParamsProvider } from './ajs-upgraded-providers';
 var checkmark_pipe_1 = require("./core/checkmark/checkmark.pipe");
 var AppModule = (function () {
@@ -33,6 +34,7 @@ AppModule = __decorate([
         ],
         providers: [
             phone_service_1.Phone,
+            phone_util_1.PhoneUtil,
         ],
         declarations: [
             app_component_1.AppComponent,
