@@ -11,7 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var static_1 = require("@angular/upgrade/static");
+var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
+var phone_service_1 = require("./core/phone/phone.service");
 var AppModule = (function () {
     function AppModule(upgrade) {
         this.upgrade = upgrade;
@@ -27,9 +29,12 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             static_1.UpgradeModule,
+            http_1.HttpModule,
+        ],
+        providers: [
+            phone_service_1.Phone,
         ],
         declarations: [app_component_1.AppComponent],
-        bootstrap: [app_component_1.AppComponent]
     }),
     __metadata("design:paramtypes", [static_1.UpgradeModule])
 ], AppModule);
