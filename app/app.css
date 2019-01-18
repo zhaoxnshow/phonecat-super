@@ -91,3 +91,15 @@ h1 {
   font-size: 1.2em;
   font-weight: bold;
 }
+.selected {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.unselected {
+  display: block;
+  position: absolute;
+  top: -500px;
+  left: 0px;
+}

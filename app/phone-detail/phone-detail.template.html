@@ -1,7 +1,7 @@
 <div *ngIf="phone">
   <div class="phone-images">
     <img [src]="img" class="phone"
-        [ngClass]="{'selected': img === mainImageUrl}"
+        [ngClass]="{'selected': img === mainImageUrl,'unselected': img !== mainImageUrl}"
         *ngFor="let img of phone.images" />
   </div>
 
