@@ -1,44 +1,34 @@
-// 'use strict';
-
-// // Register `phoneDetail` component, along with its associated controller and template
-// angular.
-//   module('phoneDetail').
-//   component('phoneDetail', {
-//     templateUrl: 'phone-detail/phone-detail.template.html',
-//     controller: ['$routeParams', 'Phone',
-//       function PhoneDetailController($routeParams, Phone) {
-//         var self = this;
-//         self.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-//           self.setImage(phone.images[0]);
-//         });
-
-//         self.setImage = function setImage(imageUrl) {
-//           self.mainImageUrl = imageUrl;
-//         };
-//       }
-//     ]
-//   });
+declare var angular: angular.IAngularStatic;
+import { Phone, PhoneData } from '../core/phone/phone.service';
 
 class PhoneDetailController {
-  phone: any;
+  phone: PhoneData;
   mainImageUrl: string;
 
-  static $inject = ['$routeParams', 'Phone'];
-  constructor($routeParams: angular.route.IRouteParamsService, Phone: any) {
+  static $inject = ['$routeParams', 'phone'];
+  constructor($routeParams: angular.route.IRouteParamsService, phone: Phone) {
     let phoneId = $routeParams['phoneId'];
-    this.phone = Phone.get({phoneId}, (phone: any) => {
-      this.setImage(phone.images[0]);
+    phone.get(phoneId).subscribe(data => {
+      this.phone = this.convertImgUrl(data);
+      this.setImage(this.phone.images[0]);
     });
   }
 
   setImage(imageUrl: string) {
     this.mainImageUrl = imageUrl;
   }
+
+  convertImgUrl(data: PhoneData) {
+    for(let i = 0; i < data.images.length; i++){
+      data.images[i] = 'app/'.concat(data.images[i]);
+    }
+    return data;
+  }
 }
 
 angular.
   module('phoneDetail').
   component('phoneDetail', {
-    templateUrl: 'phone-detail/phone-detail.template.html',
+    templateUrl: 'app/phone-detail/phone-detail.template.html',
     controller: PhoneDetailController
   });

@@ -1,39 +1,29 @@
-// 'use strict';
-// // Register `phoneDetail` component, along with its associated controller and template
-// angular.
-//   module('phoneDetail').
-//   component('phoneDetail', {
-//     templateUrl: 'phone-detail/phone-detail.template.html',
-//     controller: ['$routeParams', 'Phone',
-//       function PhoneDetailController($routeParams, Phone) {
-//         var self = this;
-//         self.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-//           self.setImage(phone.images[0]);
-//         });
-//         self.setImage = function setImage(imageUrl) {
-//           self.mainImageUrl = imageUrl;
-//         };
-//       }
-//     ]
-//   });
+"use strict";
 var PhoneDetailController = (function () {
-    function PhoneDetailController($routeParams, Phone) {
+    function PhoneDetailController($routeParams, phone) {
         var _this = this;
         var phoneId = $routeParams['phoneId'];
-        this.phone = Phone.get({ phoneId: phoneId }, function (phone) {
-            _this.setImage(phone.images[0]);
+        phone.get(phoneId).subscribe(function (data) {
+            _this.phone = _this.convertImgUrl(data);
+            _this.setImage(_this.phone.images[0]);
         });
     }
     PhoneDetailController.prototype.setImage = function (imageUrl) {
         this.mainImageUrl = imageUrl;
     };
+    PhoneDetailController.prototype.convertImgUrl = function (data) {
+        for (var i = 0; i < data.images.length; i++) {
+            data.images[i] = 'app/'.concat(data.images[i]);
+        }
+        return data;
+    };
     return PhoneDetailController;
 }());
-PhoneDetailController.$inject = ['$routeParams', 'Phone'];
+PhoneDetailController.$inject = ['$routeParams', 'phone'];
 angular.
     module('phoneDetail').
     component('phoneDetail', {
-    templateUrl: 'phone-detail/phone-detail.template.html',
+    templateUrl: 'app/phone-detail/phone-detail.template.html',
     controller: PhoneDetailController
 });
 //# sourceMappingURL=phone-detail.component.js.map
