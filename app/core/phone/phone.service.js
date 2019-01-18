@@ -22,11 +22,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //       });
 //     }
 //   ]);
+// declare var angular: angular.IAngularStatic;
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 // import { map } from 'rxjs/operators';
 require("rxjs/add/operator/map");
-var static_1 = require("@angular/upgrade/static");
 var Phone = (function () {
     function Phone(http) {
         this.http = http;
@@ -50,6 +50,6 @@ Phone = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], Phone);
 exports.Phone = Phone;
-angular.module('core.phone')
-    .factory('phone', static_1.downgradeInjectable(Phone));
+// angular.module('core.phone')
+//   .factory('phone', downgradeInjectable(Phone));
 //# sourceMappingURL=phone.service.js.map

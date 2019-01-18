@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { UpgradeModule } from '@angular/upgrade/static';
+// import { UpgradeModule } from '@angular/upgrade/static';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
@@ -10,20 +10,20 @@ import { PhoneDetailComponent } from './phone-detail/phone-detail.component';
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Phone } from './core/phone/phone.service';
-import { routeParamsProvider } from './ajs-upgraded-providers';
+// import { routeParamsProvider } from './ajs-upgraded-providers';
 import { CheckmarkPipe } from './core/checkmark/checkmark.pipe';
 
 @NgModule({
   imports: [
     BrowserModule,
-    UpgradeModule,
+    // UpgradeModule,
     HttpModule,
     FormsModule,
     AppRoutingModule
   ],
   providers: [
     Phone,
-    routeParamsProvider,
+    // routeParamsProvider,
   ],
   declarations: [ 
     AppComponent,
@@ -31,10 +31,10 @@ import { CheckmarkPipe } from './core/checkmark/checkmark.pipe';
     PhoneDetailComponent,
     CheckmarkPipe,
   ],
-  entryComponents: [
-    PhoneListComponent,
-    PhoneDetailComponent,
-  ]
+  // entryComponents: [
+  //   PhoneListComponent,
+  //   PhoneDetailComponent,
+  // ]
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {

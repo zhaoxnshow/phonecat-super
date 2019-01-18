@@ -8,10 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var static_1 = require("@angular/upgrade/static");
+// declare var angular: angular.IAngularStatic;
+// import { downgradeComponent } from '@angular/upgrade/static';
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var phone_service_1 = require("../core/phone/phone.service");
+// import { RouteParams } from '../ajs-upgraded-providers';
 var PhoneDetailComponent = (function () {
     // // static $inject = ['$routeParams', 'phone'];
     // constructor(routeParams: RouteParams, phone: Phone) {
@@ -58,6 +60,9 @@ exports.PhoneDetailComponent = PhoneDetailComponent;
 //     templateUrl: 'app/phone-detail/phone-detail.template.html',
 //     controller: PhoneDetailController
 //   });
-angular.module('phoneDetail')
-    .directive('phoneDetail', static_1.downgradeComponent({ component: PhoneDetailComponent }));
+// angular.module('phoneDetail')
+//   .directive(
+//     'phoneDetail',
+//     downgradeComponent({component: PhoneDetailComponent}) as angular.IDirectiveFactory
+//   );
 //# sourceMappingURL=phone-detail.component.js.map

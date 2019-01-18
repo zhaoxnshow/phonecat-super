@@ -14,13 +14,13 @@
 //     }
 //   ]);
 
+// declare var angular: angular.IAngularStatic;
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 
-declare var angular: angular.IAngularStatic;
 import { downgradeInjectable } from '@angular/upgrade/static';
 
 export interface PhoneData {
@@ -46,5 +46,5 @@ export class Phone {
   }
 }
 
-angular.module('core.phone')
-  .factory('phone', downgradeInjectable(Phone));
+// angular.module('core.phone')
+//   .factory('phone', downgradeInjectable(Phone));

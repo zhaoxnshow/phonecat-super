@@ -8,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// declare var angular: angular.IAngularStatic;
 var core_1 = require("@angular/core");
-var static_1 = require("@angular/upgrade/static");
+// import { downgradeComponent } from '@angular/upgrade/static';
 var phone_service_1 = require("../core/phone/phone.service");
 var PhoneListComponent = (function () {
     function PhoneListComponent(phone) {
@@ -62,8 +63,11 @@ PhoneListComponent = __decorate([
     __metadata("design:paramtypes", [phone_service_1.Phone])
 ], PhoneListComponent);
 exports.PhoneListComponent = PhoneListComponent;
-angular.module('phoneList')
-    .directive('phoneList', static_1.downgradeComponent({ component: PhoneListComponent }));
+// angular.module('phoneList')
+//   .directive(
+//     'phoneList',
+//     downgradeComponent({component: PhoneListComponent}) as angular.IDirectiveFactory
+//   );
 // class PhoneListController {
 //   phones: PhoneData[];
 //   orderProp: string;
