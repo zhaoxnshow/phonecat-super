@@ -27,10 +27,14 @@
 
       <ul class="phones">
          <li *ngFor="let phone of getPhones()" class="thumbnail phone-list-item">
-           <a href="/#!/phones/{{phone.id}}" class="thumb">
+           <!-- <a href="/#!/phones/{{phone.id}}" class="thumb">
              <img [src]="phone.imageUrl" [alt]="phone.name" />
            </a>
-           <a href="/#!/phones/{{phone.id}}" class="name">{{phone.name}}</a>
+           <a href="/#!/phones/{{phone.id}}" class="name">{{phone.name}}</a> -->
+           <a [routerLink]="['/phones', phone.id]" class="thumb">
+             <img [src]="phone.imageUrl" [alt]="phone.name" />
+           </a>
+           <a [routerLink]="['/phones', phone.id]" class="name">{{phone.name}}</a>
            <p>{{phone.snippet}}</p>
          </li>
         <!-- <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp"

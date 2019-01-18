@@ -10,20 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var static_1 = require("@angular/upgrade/static");
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var phone_service_1 = require("../core/phone/phone.service");
-var ajs_upgraded_providers_1 = require("../ajs-upgraded-providers");
 var PhoneDetailComponent = (function () {
-    // static $inject = ['$routeParams', 'phone'];
-    function PhoneDetailComponent(routeParams, phone) {
+    // // static $inject = ['$routeParams', 'phone'];
+    // constructor(routeParams: RouteParams, phone: Phone) {
+    //   // let phoneId = $routeParams['phoneId'];
+    //   // phone.get(phoneId).subscribe(data => {
+    //   //   this.phone = this.convertImgUrl(data);
+    //   //   this.setImage(this.phone.images[0]);
+    //   // });
+    //   phone.get(routeParams['phoneId']).subscribe(phone => {
+    //     this.phone = this.convertImgUrl(phone);;
+    //     this.setImage(this.phone.images[0]);
+    //   });
+    // }
+    function PhoneDetailComponent(activatedRoute, phone) {
         var _this = this;
-        // let phoneId = $routeParams['phoneId'];
-        // phone.get(phoneId).subscribe(data => {
-        //   this.phone = this.convertImgUrl(data);
-        //   this.setImage(this.phone.images[0]);
-        // });
-        phone.get(routeParams['phoneId']).subscribe(function (phone) {
-            _this.phone = _this.convertImgUrl(phone);
-            ;
+        phone.get(activatedRoute.snapshot.paramMap.get('phoneId'))
+            .subscribe(function (p) {
+            _this.phone = _this.convertImgUrl(p);
             _this.setImage(_this.phone.images[0]);
         });
     }
@@ -43,7 +49,7 @@ PhoneDetailComponent = __decorate([
         selector: 'phone-detail',
         templateUrl: './phone-detail.template.html',
     }),
-    __metadata("design:paramtypes", [ajs_upgraded_providers_1.RouteParams, phone_service_1.Phone])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, phone_service_1.Phone])
 ], PhoneDetailComponent);
 exports.PhoneDetailComponent = PhoneDetailComponent;
 // angular.

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { PhoneListComponent } from './phone-list/phone-list.component';
 import { PhoneDetailComponent } from './phone-detail/phone-detail.component';
 import { AppComponent }  from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { Phone } from './core/phone/phone.service';
 import { routeParamsProvider } from './ajs-upgraded-providers';
 import { CheckmarkPipe } from './core/checkmark/checkmark.pipe';
@@ -18,6 +19,7 @@ import { CheckmarkPipe } from './core/checkmark/checkmark.pipe';
     UpgradeModule,
     HttpModule,
     FormsModule,
+    AppRoutingModule
   ],
   providers: [
     Phone,
@@ -33,12 +35,12 @@ import { CheckmarkPipe } from './core/checkmark/checkmark.pipe';
     PhoneListComponent,
     PhoneDetailComponent,
   ]
-  // bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ]
 })
 export class AppModule {
-  constructor(private upgrade: UpgradeModule) { }
-  ngDoBootstrap() {
-    console.log('I am booting');
-    this.upgrade.bootstrap(document.documentElement, ['phonecatApp']);
-  }
+  // constructor(private upgrade: UpgradeModule) { }
+  // ngDoBootstrap() {
+  //   console.log('I am booting');
+  //   this.upgrade.bootstrap(document.documentElement, ['phonecatApp']);
+  // }
 }

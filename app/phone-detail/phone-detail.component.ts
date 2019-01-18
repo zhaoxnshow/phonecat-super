@@ -1,6 +1,7 @@
 declare var angular: angular.IAngularStatic;
 import { downgradeComponent } from '@angular/upgrade/static';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Phone, PhoneData } from '../core/phone/phone.service';
 import { RouteParams } from '../ajs-upgraded-providers';
@@ -14,17 +15,24 @@ export class PhoneDetailComponent {
   phone: PhoneData;
   mainImageUrl: string;
 
-  // static $inject = ['$routeParams', 'phone'];
-  constructor(routeParams: RouteParams, phone: Phone) {
-    // let phoneId = $routeParams['phoneId'];
-    // phone.get(phoneId).subscribe(data => {
-    //   this.phone = this.convertImgUrl(data);
-    //   this.setImage(this.phone.images[0]);
-    // });
-    phone.get(routeParams['phoneId']).subscribe(phone => {
-      this.phone = this.convertImgUrl(phone);;
-      this.setImage(this.phone.images[0]);
-    });
+  // // static $inject = ['$routeParams', 'phone'];
+  // constructor(routeParams: RouteParams, phone: Phone) {
+  //   // let phoneId = $routeParams['phoneId'];
+  //   // phone.get(phoneId).subscribe(data => {
+  //   //   this.phone = this.convertImgUrl(data);
+  //   //   this.setImage(this.phone.images[0]);
+  //   // });
+  //   phone.get(routeParams['phoneId']).subscribe(phone => {
+  //     this.phone = this.convertImgUrl(phone);;
+  //     this.setImage(this.phone.images[0]);
+  //   });
+  // }
+  constructor(activatedRoute: ActivatedRoute, phone: Phone) {
+    phone.get(activatedRoute.snapshot.paramMap.get('phoneId'))
+      .subscribe((p: PhoneData) => {
+        this.phone = this.convertImgUrl(p);
+        this.setImage(this.phone.images[0]);
+      });
   }
 
   setImage(imageUrl: string) {
