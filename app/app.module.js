@@ -12,8 +12,13 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var static_1 = require("@angular/upgrade/static");
 var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
+var phone_list_component_1 = require("./phone-list/phone-list.component");
+var phone_detail_component_1 = require("./phone-detail/phone-detail.component");
 var app_component_1 = require("./app.component");
 var phone_service_1 = require("./core/phone/phone.service");
+var ajs_upgraded_providers_1 = require("./ajs-upgraded-providers");
+var checkmark_pipe_1 = require("./core/checkmark/checkmark.pipe");
 var AppModule = (function () {
     function AppModule(upgrade) {
         this.upgrade = upgrade;
@@ -30,11 +35,22 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             static_1.UpgradeModule,
             http_1.HttpModule,
+            forms_1.FormsModule,
         ],
         providers: [
             phone_service_1.Phone,
+            ajs_upgraded_providers_1.routeParamsProvider,
         ],
-        declarations: [app_component_1.AppComponent],
+        declarations: [
+            app_component_1.AppComponent,
+            phone_list_component_1.PhoneListComponent,
+            phone_detail_component_1.PhoneDetailComponent,
+            checkmark_pipe_1.CheckmarkPipe,
+        ],
+        entryComponents: [
+            phone_list_component_1.PhoneListComponent,
+            phone_detail_component_1.PhoneDetailComponent,
+        ]
     }),
     __metadata("design:paramtypes", [static_1.UpgradeModule])
 ], AppModule);
